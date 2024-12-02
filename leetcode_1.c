@@ -38,21 +38,51 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
  */
 
 #include <stdio.h>
-#include <stdbool.h>
 #include <stdlib.h>
-
-void	*checker(int *nums, int numSize, int target)
-{
-
-}
 
 int* 	twoSum(int* nums, int numsSize, int target, int* returnSize)
 {
+	int		i = 0;
+	int		j;
+	int		*mallocNums;
 	//checker
+	if((numsSize < 2 || numsSize > 104) || (target < -109 || target > 109))
+		return(NULL);
+	mallocNums = malloc(sizeof(int) * 2);
+	if(!mallocNums)
+		return(NULL);
+	while(i < numsSize)
+	{
+		if(nums[i] < -109 || nums[i] > 109)
+			return(NULL);
+		j = i + 1;
+		while(j < numsSize)
+		{
+			if(nums[i] + nums[j] == target)
+			{
+				mallocNums[0] = nums[i];
+				mallocNums[1] = nums[j];
+			}
+			j++;
+		}
+		i++;
+	}
+	return(mallocNums);
 }
 
 int		main(void)
 {
+	int		tab[4] = {2, 7, 11, 15};
+	
+	int *res = twoSum(tab, 4, 9, NULL);
+	if(!res)
+	{
+		printf("error");
+		return(0);
+	}
+	for(int i = 0; i < 2; i++)
+		printf("res[%i]:%i", i, res[i]);
+	free(res);
 	return(0);
 }
 
