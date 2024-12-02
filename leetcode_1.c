@@ -51,8 +51,6 @@ int* 	twoSum(int* nums, int numsSize, int target, int* returnSize)
 		return(NULL);
 	while(i < numsSize)
 	{
-		if(nums[i] < -109 || nums[i] > 109)
-			return(NULL);
 		j = i + 1;
 		while(j < numsSize)
 		{
@@ -65,14 +63,15 @@ int* 	twoSum(int* nums, int numsSize, int target, int* returnSize)
 		}
 		i++;
 	}
+	*returnSize = 2;
 	return(mallocNums);
 }
 
 int		main(void)
 {
-	int		tab[] = {3, 3};
-	
-	int *res = twoSum(tab, 2, 2, NULL);
+	int		tab[] = {3, 3, 2, -2};
+	int		sizeTab = 0;
+	int 	*res = twoSum(tab, 4, 6, &sizeTab);
 	if(!res)
 	{
 		printf("error");
@@ -80,6 +79,7 @@ int		main(void)
 	}
 	for(int i = 0; i < 2; i++)
 		printf("res[%i]:%i", i, res[i]);
+	printf("sizeTab: %i", sizeTab); //devrait afficher 2
 	free(res);
 	return(0);
 }
