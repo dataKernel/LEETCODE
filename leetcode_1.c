@@ -45,9 +45,7 @@ int* 	twoSum(int* nums, int numsSize, int target, int* returnSize)
 	int		i = 0;
 	int		j;
 	int		*mallocNums;
-	//checker
-	if((numsSize < 2 || numsSize > 104) || (target < -109 || target > 109))
-		return(NULL);
+
 	mallocNums = malloc(sizeof(int) * 2);
 	if(!mallocNums)
 		return(NULL);
@@ -60,8 +58,8 @@ int* 	twoSum(int* nums, int numsSize, int target, int* returnSize)
 		{
 			if(nums[i] + nums[j] == target)
 			{
-				mallocNums[0] = nums[i];
-				mallocNums[1] = nums[j];
+				mallocNums[0] = i;
+				mallocNums[1] = j;
 			}
 			j++;
 		}
@@ -69,21 +67,3 @@ int* 	twoSum(int* nums, int numsSize, int target, int* returnSize)
 	}
 	return(mallocNums);
 }
-
-int		main(void)
-{
-	int		tab[4] = {2, 7, 11, 15};
-	
-	int *res = twoSum(tab, 4, 9, NULL);
-	if(!res)
-	{
-		printf("error");
-		return(0);
-	}
-	for(int i = 0; i < 2; i++)
-		printf("res[%i]:%i", i, res[i]);
-	free(res);
-	return(0);
-}
-
-
