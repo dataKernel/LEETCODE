@@ -67,3 +67,19 @@ int* 	twoSum(int* nums, int numsSize, int target, int* returnSize)
 	}
 	return(mallocNums);
 }
+
+int		main(void)
+{
+	int		tab[] = {3, 3};
+	
+	int *res = twoSum(tab, 2, 2, NULL);
+	if(!res)
+	{
+		printf("error");
+		return(0);
+	}
+	for(int i = 0; i < 2; i++)
+		printf("res[%i]:%i", i, res[i]);
+	free(res);
+	return(0);
+}
