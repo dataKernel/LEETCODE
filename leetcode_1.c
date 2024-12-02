@@ -71,7 +71,7 @@ int		main(void)
 {
 	int		tab[] = {3, 3, 2, -2};
 	int		sizeTab = 0;
-	int 	*res = twoSum(tab, 4, 6, &sizeTab);
+	int 	*res = twoSum(tab, 6, 6, &sizeTab);
 	if(!res)
 	{
 		printf("error");
